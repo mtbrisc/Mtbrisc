@@ -4,17 +4,58 @@
 html,
 body {
   font-family: "Roboto", sans-serif;
-  background-color: midnightblue;
+  /* animated color gradient */
   color: white;
   padding: 0;
   margin: 0;
   height: 100dvh;
+  background: black;
 }
 body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
 }
+body::before {
+  content: "";
+  display: block;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  position: absolute;
+  inset: -200vw;
+  z-index: -1;
+  animation: spin 7s linear infinite;
+  opacity: 0.6;
+}
+body::after {
+  content: "";
+  display: block;
+  background: linear-gradient(0deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  position: absolute;
+  inset: -200vw;
+  z-index: -1;
+  animation: spinBack 2s linear infinite;
+  opacity: 0.2;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes spinBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 h1 {
   font-weight: 200;
 }
